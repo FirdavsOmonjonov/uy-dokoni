@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+	<title>La Casa</title>
+	<meta charset="utf-8">
+	<meta name="author" content="pixelhint.com">
+	<meta name="description" content="La casa free real state fully responsive html5/css3 home page website template"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+	
+	{% include 'components/_styles.html' %}
+
+	{% include 'components/_scripts.html' %}
+</head>
+<body>
+    <div>
+        <section class="listings">
+            <div class="wrapper">
+                <ul class="properties_list">
+                    
+                    {% for home in homes %}
+                    <li>
+                        <a href="#">
+                            <img src="{{ home.image.url }}" alt="" title="" class="property_img"/>
+                        </a>
+                        <span class="price">${{home.price}}</span>
+                        <div class="property_details">
+                            <h1>
+                                <a href="#">{{home.title}}</a>
+                            </h1>
+                           <h1>{{home.category.name}}</h1>
+                            <h2>{{home.description}}</h2>
+                        </div>
+                    </li>
+                    {% endfor %}
+                    
+                </ul>
+                <div class="more_listing">
+                    <a href="{% url 'home_page' %}" class="more_listing_btn">Backe</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>

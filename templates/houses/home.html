@@ -1,0 +1,30 @@
+
+{% load static %}
+
+<section class="listings">
+    <div class="wrapper">
+        <ul class="properties_list">
+            
+            {% for home in homes %}
+            <li>
+                <a href="{% url 'detail' home.id %}">
+                    <img src="{{ home.image.url }}" alt="" title="" class="property_img"/>
+                </a>
+                <span class="price">{{home.category.name}}</span>
+                <div class="property_details">
+                    <h1>
+                        <a href="{% url 'detail' home.id  %}">{{home.title| truncatewords:2}}</a>
+                    </h1>
+                    <h3><span>${{home.price}}</span></h3>
+                    <h2>{{home.description| truncatewords:10}}</h2>
+                </div>
+            </li>
+            {% endfor %}
+            
+        </ul>
+        <div class="more_listing">
+            <a href="{% url 'listing' %}" class="more_listing_btn">View More Listings</a>
+        </div>
+    </div>
+</section>
+
